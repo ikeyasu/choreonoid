@@ -4,6 +4,7 @@ from cnoid.Body import *
 from cnoid.BodyPlugin import *
 import math;
 
+# RootItem.instance().find('AISTSimulator')
 worldItem = WorldItem()
 RootItem.instance().addChildItem(worldItem)
 
@@ -43,4 +44,15 @@ simulatorItem.setTimeRangeMode(SimulatorItem.TimeRangeMode.ACTIVE_CONTROL)
 worldItem.addChildItem(simulatorItem)
 ItemTreeView.instance().selectItem(simulatorItem)
 
+prevTime = 0
 simulatorItem.startSimulation()
+while simulatorItem.currentTime() - prevTime < 0.1:
+    print(simulatorItem.currentTime())
+    break
+print(simulatorItem.currentTime())
+simulatorItem.pauseSimulation()
+simulatorItem.restartSimulation()
+while simulatorItem.currentTime() - prevTime < 0.1:
+    break
+simulatorItem.pauseSimulation()
+print(simulatorItem.currentTime())
