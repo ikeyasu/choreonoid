@@ -107,7 +107,7 @@ public:
 
 Joystick::Joystick()
 {
-    impl = new JoystickImpl(this, "/dev/input/js0");
+    impl = new JoystickImpl(this, "/dev/input/js2");
 }
 
 
