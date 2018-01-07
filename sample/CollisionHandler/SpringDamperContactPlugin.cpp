@@ -75,14 +75,17 @@ Item* SpringDamperContactItem::doDuplicate() const
 
 void SpringDamperContactItem::onPositionChanged()
 {
+    mvout() << "onPositionChanged" << std::endl;
     AISTSimulatorItem* simulator = findOwnerItem<AISTSimulatorItem>();
     AISTSimulatorItem* currentSimulator = weakCurrentSimulator.lock();
     if(simulator != currentSimulator){
         if(currentSimulator){
+            mvout() << "unregisterCollisionHandler" << std::endl;
             currentSimulator->unregisterCollisionHandler("SpringDamperContact");
             weakCurrentSimulator.reset();
         }
         if(simulator){
+            mvout() << "registerCollisionHandler" << std::endl;
             simulator->registerCollisionHandler(
                 "SpringDamperContact",
                 [&](Link* link1, Link* link2, const CollisionArray& collisions, ContactMaterial* cm){
@@ -96,6 +99,14 @@ void SpringDamperContactItem::onPositionChanged()
 
 bool SpringDamperContactItem::initializeSimulation(SimulatorItem* simulatorItem)
 {
+    mvout() << "initializeSimulation" << std::endl;
+    AISTSimulatorItem* simulator = findOwnerItem<AISTSimulatorItem>();
+    simulator->registerCollisionHandler(
+	"SpringDamperContactInit",
+	[](Link* link1, Link* link2, const CollisionArray& collisions, ContactMaterial* cm){
+            mvout() << collisions.size() << std::endl;
+	    return true;
+	});
     return true;
 }
 
@@ -107,6 +118,7 @@ bool SpringDamperContactItem::calcContactForce
     const bool doApplyToLink2 = !link2->isRoot() || !link2->isFixedJoint();
     const double mu = cm->dynamicFriction();
 
+    mvout() << collisions.size() << std::endl;
     for(size_t i=0; i < collisions.size(); ++i){
         const Collision& c = collisions[i];
 
