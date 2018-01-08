@@ -37,6 +37,7 @@ qrc_*.cpp
 /Doxyfile
 gettext.h
 messages.pot
+/CMakeReleaseBuild
 
 
 
