@@ -20,6 +20,7 @@ namespace cnoid {
 
 void exportSimulationClasses(py::module m)
 {
+    mvout() << "======> BodyPlugin: exportSimulationClasses" << std::endl;
     py::class_<SimulatorItem, SimulatorItemPtr, Item> simulatorItemClass(m, "SimulatorItem");
 
     simulatorItemClass

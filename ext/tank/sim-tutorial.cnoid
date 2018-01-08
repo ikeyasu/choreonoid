@@ -75,98 +75,29 @@ items:
                     reloading: true
         - 
           id: 6
-          name: "box1"
-          plugin: Body
-          class: BodyItem
-          data: 
-            modelFile: "${SHARE}/model/misc/box1.body"
-            currentBaseLink: "body"
-            rootPosition: [ 0, 0, 0 ]
-            rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [  ]
-            initialRootPosition: [ 0, 0, 0 ]
-            initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            zmp: [ 0, 0, 0 ]
-            collisionDetection: true
-            selfCollisionDetection: false
-            isEditable: true
-        - 
-          id: 7
           name: "box2"
           plugin: Body
           class: BodyItem
           data: 
             modelFile: "${SHARE}/model/misc/box2.body"
             currentBaseLink: "WAIST"
-            rootPosition: [ 0, 0, 0.3 ]
+            rootPosition: [ 0, 0.0001, 0.3 ]
             rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
+              0.999999967, 4.51919541e-06, 0.000256985412, 
+              -4.5185738e-06, 1, -2.41943291e-06, 
+              -0.000256985423, 2.41827162e-06, 0.999999967 ]
             jointPositions: [  ]
-            initialRootPosition: [ 0, 0, 0.3 ]
+            initialRootPosition: [ 0, 0.0001, 0.3 ]
             initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
+              0.999999967, 4.51919541e-06, 0.000256985412, 
+              -4.5185738e-06, 1, -2.41943291e-06, 
+              -0.000256985423, 2.41827162e-06, 0.999999967 ]
             zmp: [ 0, 0, 0 ]
             collisionDetection: true
-            selfCollisionDetection: false
+            selfCollisionDetection: true
             isEditable: true
         - 
-          id: 8
-          name: "box3"
-          plugin: Body
-          class: BodyItem
-          data: 
-            modelFile: "${SHARE}/model/misc/box3.body"
-            currentBaseLink: "WAIST"
-            rootPosition: [ 0, 0, 0 ]
-            rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [  ]
-            initialRootPosition: [ 0, 0, 0 ]
-            initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            zmp: [ 0, 0, 0 ]
-            collisionDetection: true
-            selfCollisionDetection: false
-            isEditable: true
-        - 
-          id: 9
-          name: "box4"
-          plugin: Body
-          class: BodyItem
-          data: 
-            modelFile: "${SHARE}/model/misc/box4.body"
-            currentBaseLink: "WAIST"
-            rootPosition: [ 0, 0, 0 ]
-            rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointPositions: [  ]
-            initialRootPosition: [ 0, 0, 0 ]
-            initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            zmp: [ 0, 0, 0 ]
-            collisionDetection: true
-            selfCollisionDetection: false
-            isEditable: true
-        - 
-          id: 10
+          id: 7
           name: "Floor"
           plugin: Body
           class: BodyItem
@@ -189,7 +120,7 @@ items:
             selfCollisionDetection: false
             isEditable: false
         - 
-          id: 11
+          id: 8
           name: "AISTSimulator"
           plugin: Body
           class: AISTSimulatorItem
@@ -220,7 +151,7 @@ items:
             oldAccelSensorMode: false
           children: 
             - 
-              id: 12
+              id: 9
               name: "GLVisionSimulator"
               plugin: Body
               class: GLVisionSimulatorItem
@@ -237,14 +168,7 @@ items:
                 enableHeadLight: true
                 enableAdditionalLights: true
             - 
-              id: 13
-              name: "SpringDamperContact"
-              plugin: SpringDamperContact
-              class: SpringDamperContactItem
-              data: 
-                enabled: true
-            - 
-              id: 14
+              id: 10
               name: "SetupTankMaterial.py"
               plugin: PythonSimScript
               class: PythonSimScriptItem
@@ -254,6 +178,13 @@ items:
                 simulationOnly: true
                 backgroundExecution: false
                 file: "${PROJECT_DIR}/tank_set-material.py"
+            - 
+              id: 11
+              name: "GymCollisionHandler"
+              plugin: GymCollisionHandler
+              class: GymCollisionHandlerItem
+              data: 
+                enabled: true
 views: 
   - 
     id: 0
@@ -266,9 +197,9 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 2 ]
-      checked: [ 2, 7, 10, 14 ]
-      expanded: [ 1, 2, 3, 6, 8, 10, 11 ]
+      selected: [ 8 ]
+      checked: [ 2, 6, 7, 10 ]
+      expanded: [ 1, 2, 3, 6, 7, 8 ]
   - 
     id: 2
     plugin: Base
@@ -357,7 +288,6 @@ views:
       spinBox: true
       slider: true
       labelOnLeft: true
-      currentBodyItem: 2
   - 
     id: 7
     plugin: Body
@@ -365,7 +295,6 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
-      currentBodyItem: 2
   - 
     id: 8
     plugin: OpenRTM
@@ -383,7 +312,7 @@ toolbars:
     frameRate: 100
     playbackFrameRate: 50
     idleLoopDrivenMode: false
-    currentTime: 1.11
+    currentTime: 0
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
@@ -395,8 +324,6 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
-  "BodyBar": 
-    current: 2
   "LeggedBodyBar": 
     stanceWidth: 0.15
   "BodyMotionGenerationBar": 
@@ -452,21 +379,6 @@ Body:
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
-      - 
-        bodyItem: 8
-        showCenterOfMass: false
-        showPpcom: false
-        showZmp: false
-      - 
-        bodyItem: 9
-        showCenterOfMass: false
-        showPpcom: false
-        showZmp: false
-      - 
-        bodyItem: 10
-        showCenterOfMass: false
-        showPpcom: false
-        showZmp: false
     staticModelEditing: true
   "KinematicFaultChecker": 
     checkJointPositions: true
@@ -519,15 +431,24 @@ viewAreas:
                 - 
                   type: pane
                   views: [ 5, 6, 4 ]
-                  current: 5
+                  current: 4
                 - 
                   type: pane
                   views: [ 3 ]
                   current: 3
             - 
-              type: pane
-              views: [ 2, 9 ]
-              current: 2
+              type: splitter
+              orientation: vertical
+              sizes: [ 119, 118 ]
+              children: 
+                - 
+                  type: pane
+                  views: [ 2 ]
+                  current: 2
+                - 
+                  type: pane
+                  views: [ 9 ]
+                  current: 9
 layoutOfToolBars: 
   rows: 
     - 

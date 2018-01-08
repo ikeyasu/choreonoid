@@ -13,15 +13,15 @@ contactMaterials:
   -
     materials: [ Tank, Box ]
     friction: 0.5
-    collisionHandler: SpringDamperContact
+    collisionHandler: GymCollisionHandler
   -
     materials: [ Tank, Floor ]
     friction: 0.5
-    collisionHandler: SpringDamperContact
+    collisionHandler: GymCollisionHandler
   -
     materials: [ Box, Floor ]
     friction: 0.5
-    collisionHandler: SpringDamperContact
+    collisionHandler: GymCollisionHandler
   -
     materials: [ Default, Floor ]
     friction: 0.5

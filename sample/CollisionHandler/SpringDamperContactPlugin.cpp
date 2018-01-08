@@ -100,13 +100,6 @@ void SpringDamperContactItem::onPositionChanged()
 bool SpringDamperContactItem::initializeSimulation(SimulatorItem* simulatorItem)
 {
     mvout() << "initializeSimulation" << std::endl;
-    AISTSimulatorItem* simulator = findOwnerItem<AISTSimulatorItem>();
-    simulator->registerCollisionHandler(
-	"SpringDamperContactInit",
-	[](Link* link1, Link* link2, const CollisionArray& collisions, ContactMaterial* cm){
-            mvout() << collisions.size() << std::endl;
-	    return true;
-	});
     return true;
 }
 
@@ -119,6 +112,7 @@ bool SpringDamperContactItem::calcContactForce
     const double mu = cm->dynamicFriction();
 
     mvout() << collisions.size() << std::endl;
+    /*
     for(size_t i=0; i < collisions.size(); ++i){
         const Collision& c = collisions[i];
 
@@ -147,6 +141,6 @@ bool SpringDamperContactItem::calcContactForce
             link2->f_ext() += f;
             link2->tau_ext() += c.point.cross(f);
         }
-    }
+    }*/
     return true;
 }

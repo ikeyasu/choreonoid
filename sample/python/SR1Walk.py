@@ -2,6 +2,8 @@ from cnoid.Util import *
 from cnoid.Base import *
 from cnoid.Body import *
 from cnoid.BodyPlugin import *
+import cnoid
+g= Item.find("GymCollisionHandler")
 import math;
 
 # RootItem.instance().find('AISTSimulator')

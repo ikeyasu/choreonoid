@@ -3,3 +3,17 @@ add_cnoid_simple_controller(TankTutorial_TurretController2 TurretController2.cpp
 add_cnoid_simple_controller(TankTutorial_TurretController1 TurretController1.cpp)
 add_cnoid_simple_controller(TankTutorial_LightController LightController.cpp)
 add_cnoid_simple_controller(TankTutorial_CameraController CameraController.cpp)
+
+set(target CnoidGymCollisionHandlerPlugin)
+add_cnoid_plugin(${target} SHARED GymCollisionHandlerPlugin.cpp)
+target_link_libraries(${target} CnoidBodyPlugin)
+apply_common_setting_for_plugin(${target})
+
+if(ENABLE_PYTHON)
+  if(USE_PYBIND11)
+    add_subdirectory(pybind11)
+  elseif(USE_BOOST_PYTHON)
+    message(FATAL_ERROR "GymCollisionHandlerPlugin's boostpython file is not implemented yet.")
+    #add_subdirectory(boostpython)
+  endif()
+endif()
