@@ -15,9 +15,8 @@ void exportClasses(py::module m){
     py::class_<GymCollisionHandlerItem, GymCollisionHandlerItemPtr, SubSimulatorItem> itemClass(m, "GymCollisionHandlerItem");
     itemClass
         .def(py::init<>())
-        .def("test_callback1", [](py::object func) { return func(); })
+        .def("test_callback1", [](py::object self, py::object func) { return func(); })
         .def("test1", &GymCollisionHandlerItem::test1);
-    PyItemList<GymCollisionHandlerItem>(m, "GymCollisionHandlerItem");
 }
 }
 

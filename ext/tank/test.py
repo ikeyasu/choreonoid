@@ -1,0 +1,2 @@
+from cnoid.GymCollisionHandlerPlugin import *
+
