@@ -16,7 +16,8 @@ void exportClasses(py::module m){
     itemClass
         .def(py::init<>())
         .def("test_callback1", [](py::object self, py::object func) { return func(); })
-        .def("test1", &GymCollisionHandlerItem::test1);
+        .def("setCollisionHandler", &GymCollisionHandlerItem::setCollisionHandler, py::keep_alive<1, 2>())
+        .def("getCollisionHandler", &GymCollisionHandlerItem::getCollisionHandler);
 }
 }
 

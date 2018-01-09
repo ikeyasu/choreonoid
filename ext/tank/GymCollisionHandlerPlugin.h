@@ -11,6 +11,8 @@
 #include <cnoid/SubSimulatorItem>
 #include <cnoid/AISTSimulatorItem>
 #include <cnoid/ContactMaterial>
+#include <cnoid/PyBase>
+#include <memory>
 #include "exportdecl.h"
 
 using namespace std;
@@ -27,7 +29,8 @@ public:
     GymCollisionHandlerItem(const GymCollisionHandlerItem& org);
     virtual void onPositionChanged();
     virtual bool initializeSimulation(SimulatorItem* simulatorItem);
-    void test1();
+    void setCollisionHandler(pybind11::function callback);
+    pybind11::function getCollisionHandler();
 
 protected:
     virtual Item* doDuplicate() const;
@@ -36,6 +39,8 @@ private:
     bool calcContactForce(Link* link1, Link* link2, const CollisionArray& collisions, ContactMaterial* cm);
 
     weak_ref_ptr<AISTSimulatorItem> weakCurrentSimulator;
+    //shared_ptr<pybind11::object> collisionPythonCallback;
+    pybind11::function collisionPythonCallback;
 };
 
 typedef ref_ptr<GymCollisionHandlerItem> GymCollisionHandlerItemPtr;

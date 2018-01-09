@@ -4,6 +4,7 @@
 */
 
 #include "GymCollisionHandlerPlugin.h"
+#include <cnoid/LazyCaller>
 
 
 
@@ -45,8 +46,20 @@ Item* GymCollisionHandlerItem::doDuplicate() const
 }
 
 
-void GymCollisionHandlerItem::test1()
+void GymCollisionHandlerItem::setCollisionHandler(pybind11::function callback)
 {
+	//collisionPythonCallback = std::make_shared<pybind11::object>(callback);
+	collisionPythonCallback = callback;
+//	collisionPythonCallback.inc_ref();
+//	callFromMainThread([&](){
+//    	 collisionPythonCallback();
+//    });
+//	collisionPythonCallback();
+}
+
+pybind11::function GymCollisionHandlerItem::getCollisionHandler()
+{
+	return collisionPythonCallback;
 }
 
 void GymCollisionHandlerItem::onPositionChanged()
@@ -83,7 +96,15 @@ bool GymCollisionHandlerItem::initializeSimulation(SimulatorItem* simulatorItem)
 bool GymCollisionHandlerItem::calcContactForce
 (Link* link1, Link* link2, const CollisionArray& collisions, ContactMaterial* cm)
 {
-    mvout() << "=====> GYM:" << collisions.size() << std::endl;
+//    mvout() << "=====> GYM:" << collisions.size() << std::endl;
+//  	pybind11::object *func = collisionPythonCallback.get();
+//  	if (func) {
+//  		(*func)();
+//  	}
+//    callLater([&](){
+//    	 collisionPythonCallback();
+//    });
+    collisionPythonCallback();
     return true;
 }
 

@@ -12,7 +12,7 @@ items:
       data: 
         collisionDetection: false
         collisionDetector: AISTCollisionDetector
-        materialTableFile: "${PROJECT_DIR}/tank-material.yaml"
+        materialTableFile: "/home/ikeyasu/work/choreonoid/CMakeReleaseBuild/bin/../../ext/tank/tank-material.yaml"
       children: 
         - 
           id: 2
@@ -81,17 +81,17 @@ items:
           data: 
             modelFile: "${SHARE}/model/misc/box2.body"
             currentBaseLink: "WAIST"
-            rootPosition: [ 0, 0.0001, 0.3 ]
+            rootPosition: [ 1.14424571, 8.50689275e-05, 0.408054244 ]
             rootAttitude: [ 
-              0.999999967, 4.51919541e-06, 0.000256985412, 
-              -4.5185738e-06, 1, -2.41943291e-06, 
-              -0.000256985423, 2.41827162e-06, 0.999999967 ]
+              0.999999973, 4.15855493e-06, 0.000232793726, 
+              -4.15847055e-06, 1, -3.62968123e-07, 
+              -0.000232793728, 3.62000047e-07, 0.999999973 ]
             jointPositions: [  ]
-            initialRootPosition: [ 0, 0.0001, 0.3 ]
+            initialRootPosition: [ 1.14424571, 8.50689275e-05, 0.408054244 ]
             initialRootAttitude: [ 
-              0.999999967, 4.51919541e-06, 0.000256985412, 
-              -4.5185738e-06, 1, -2.41943291e-06, 
-              -0.000256985423, 2.41827162e-06, 0.999999967 ]
+              0.999999973, 4.15855493e-06, 0.000232793726, 
+              -4.15847055e-06, 1, -3.62968123e-07, 
+              -0.000232793728, 3.62000047e-07, 0.999999973 ]
             zmp: [ 0, 0, 0 ]
             collisionDetection: true
             selfCollisionDetection: true
@@ -177,7 +177,7 @@ items:
                 delay: 0
                 simulationOnly: true
                 backgroundExecution: false
-                file: "${PROJECT_DIR}/tank_set-material.py"
+                file: "/home/ikeyasu/work/choreonoid/CMakeReleaseBuild/bin/../../ext/tank/tank_set-material.py"
             - 
               id: 11
               name: "GymCollisionHandler"
@@ -197,7 +197,7 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 8 ]
+      selected: [ 6, 8 ]
       checked: [ 2, 6, 7, 10 ]
       expanded: [ 1, 2, 3, 6, 7, 8 ]
   - 
@@ -249,9 +249,9 @@ views:
           fieldOfView: 0.698132
           near: 0.01
           far: 100
-          eye: [ -0.692628456, -1.40573019, 1.96695705 ]
-          direction: [ 0.527231364, 0.578876187, -0.622036534 ]
-          up: [ 0.418853263, 0.459881935, 0.782988219 ]
+          eye: [ 1.25211407, -3.36535369, 0.485040111 ]
+          direction: [ 0.226002224, 0.970732308, -0.0812513467 ]
+          up: [ 0.018423901, 0.0791349557, 0.996693643 ]
         - 
           camera: [ System, Orthographic ]
           orthoHeight: 20
@@ -288,6 +288,7 @@ views:
       spinBox: true
       slider: true
       labelOnLeft: true
+      currentBodyItem: 6
   - 
     id: 7
     plugin: Body
@@ -295,13 +296,9 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
+      currentBodyItem: 6
   - 
     id: 8
-    plugin: OpenRTM
-    class: RTSNameServerView
-    mounted: true
-  - 
-    id: 9
     plugin: Python
     class: PythonConsoleView
     mounted: true
@@ -324,6 +321,8 @@ toolbars:
     snapDistance: 0.025
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
+  "BodyBar": 
+    current: 6
   "LeggedBodyBar": 
     stanceWidth: 0.15
   "BodyMotionGenerationBar": 
@@ -394,8 +393,6 @@ Body:
     inputFrameRate: 200
     isOutputFrameRateSpecified: false
     outputFrameRate: 200
-OpenRTM: 
-  "deleteUnmanagedRTCsOnStartingSimulation": false
 viewAreas: 
   - 
     type: embedded
@@ -408,7 +405,7 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 372, 296 ]
+          sizes: [ 360, 286 ]
           children: 
             - 
               type: pane
@@ -416,12 +413,12 @@ viewAreas:
               current: 1
             - 
               type: pane
-              views: [ 0, 7, 8 ]
+              views: [ 0, 7 ]
               current: 0
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 425, 243 ]
+          sizes: [ 404, 242 ]
           children: 
             - 
               type: splitter
@@ -439,7 +436,7 @@ viewAreas:
             - 
               type: splitter
               orientation: vertical
-              sizes: [ 119, 118 ]
+              sizes: [ 118, 118 ]
               children: 
                 - 
                   type: pane
@@ -447,8 +444,8 @@ viewAreas:
                   current: 2
                 - 
                   type: pane
-                  views: [ 9 ]
-                  current: 9
+                  views: [ 8 ]
+                  current: 8
 layoutOfToolBars: 
   rows: 
     - 
