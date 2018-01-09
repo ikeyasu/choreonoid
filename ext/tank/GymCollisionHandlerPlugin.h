@@ -29,8 +29,9 @@ public:
     GymCollisionHandlerItem(const GymCollisionHandlerItem& org);
     virtual void onPositionChanged();
     virtual bool initializeSimulation(SimulatorItem* simulatorItem);
-    void setCollisionHandler(pybind11::function callback);
-    pybind11::function getCollisionHandler();
+    SignalProxy<void()> sigCollisioned() {
+        return sigCollisioned_;
+    }
 
 protected:
     virtual Item* doDuplicate() const;
@@ -41,6 +42,7 @@ private:
     weak_ref_ptr<AISTSimulatorItem> weakCurrentSimulator;
     //shared_ptr<pybind11::object> collisionPythonCallback;
     pybind11::function collisionPythonCallback;
+    Signal<void()> sigCollisioned_;
 };
 
 typedef ref_ptr<GymCollisionHandlerItem> GymCollisionHandlerItemPtr;
