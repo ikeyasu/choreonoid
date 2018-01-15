@@ -1,0 +1,28 @@
+materials:
+  -
+    name: Tank
+  -
+    name: Floor
+  -
+    name: Box
+
+contactMaterials:
+  -
+    materials: [ Default, Default ]
+    friction: 0.5
+  -
+    materials: [ Tank, Box ]
+    friction: 0.5
+    collisionHandler: CollisionSignal
+  -
+    materials: [ Tank, Floor ]
+    friction: 0.5
+    collisionHandler: CollisionSignal
+  -
+    materials: [ Box, Floor ]
+    friction: 0.5
+    collisionHandler: CollisionSignal
+  -
+    materials: [ Default, Floor ]
+    friction: 0.5
+

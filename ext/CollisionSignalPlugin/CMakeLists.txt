@@ -1,0 +1,13 @@
+set(target CnoidCollisionSignalPlugin)
+add_cnoid_plugin(${target} SHARED CollisionSignalPlugin.cpp)
+target_link_libraries(${target} CnoidBodyPlugin)
+apply_common_setting_for_plugin(${target})
+
+if(ENABLE_PYTHON)
+  if(USE_PYBIND11)
+    add_subdirectory(pybind11)
+  elseif(USE_BOOST_PYTHON)
+    message(FATAL_ERROR "CollisionSignalPlugin's boostpython file is not implemented yet.")
+    #add_subdirectory(boostpython)
+  endif()
+endif()
