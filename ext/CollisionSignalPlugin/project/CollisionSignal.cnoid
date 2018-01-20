@@ -38,43 +38,8 @@ items:
             collisionDetection: true
             selfCollisionDetection: true
             isEditable: true
-          children: 
-            - 
-              id: 3
-              name: "TurretController"
-              plugin: Body
-              class: SimpleControllerItem
-              data: 
-                isNoDelayMode: true
-                controllerOptions: ""
-                controller: "TankTutorial_TurretController2.so"
-                baseDirectory: "Controller directory"
-                reloading: true
-              children: 
-                - 
-                  id: 4
-                  name: "TrackController"
-                  plugin: Body
-                  class: SimpleControllerItem
-                  data: 
-                    isNoDelayMode: true
-                    controllerOptions: ""
-                    controller: "TankTutorial_TrackController.so"
-                    baseDirectory: "Controller directory"
-                    reloading: true
-                - 
-                  id: 5
-                  name: "CameraController"
-                  plugin: Body
-                  class: SimpleControllerItem
-                  data: 
-                    isNoDelayMode: true
-                    controllerOptions: ""
-                    controller: "TankTutorial_CameraController.so"
-                    baseDirectory: "Controller directory"
-                    reloading: true
         - 
-          id: 6
+          id: 3
           name: "box2"
           plugin: Body
           class: BodyItem
@@ -97,7 +62,7 @@ items:
             selfCollisionDetection: true
             isEditable: true
         - 
-          id: 7
+          id: 4
           name: "Floor"
           plugin: Body
           class: BodyItem
@@ -120,7 +85,7 @@ items:
             selfCollisionDetection: false
             isEditable: false
         - 
-          id: 8
+          id: 5
           name: "AISTSimulator"
           plugin: Body
           class: AISTSimulatorItem
@@ -151,14 +116,14 @@ items:
             oldAccelSensorMode: false
           children: 
             - 
-              id: 9
+              id: 6
               name: "CollisionSignal"
               plugin: CollisionSignal
               class: CollisionSignalItem
               data: 
                 enabled: true
             - 
-              id: 10
+              id: 7
               name: "GLVisionSimulator"
               plugin: Body
               class: GLVisionSimulatorItem
@@ -175,7 +140,7 @@ items:
                 enableHeadLight: true
                 enableAdditionalLights: true
             - 
-              id: 11
+              id: 8
               name: "SetupTankMaterial.py"
               plugin: PythonSimScript
               class: PythonSimScriptItem
@@ -197,9 +162,9 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      selected: [ 1, 8 ]
-      checked: [ 2, 6, 7, 11 ]
-      expanded: [ 1, 2, 3, 6, 7, 8 ]
+      selected: [ 1 ]
+      checked: [ 2, 3, 4, 8 ]
+      expanded: [ 1, 2, 3, 4, 5 ]
   - 
     id: 2
     plugin: Base
@@ -288,7 +253,7 @@ views:
       spinBox: true
       slider: true
       labelOnLeft: true
-      currentBodyItem: 6
+      currentBodyItem: 3
   - 
     id: 7
     plugin: Body
@@ -296,7 +261,7 @@ views:
     mounted: true
     state: 
       listingMode: "Link List"
-      currentBodyItem: 6
+      currentBodyItem: 3
   - 
     id: 8
     plugin: Python
@@ -322,7 +287,7 @@ toolbars:
     penetrationBlockDepth: 0.0005
     lazyCollisionDetectionMode: true
   "BodyBar": 
-    current: 6
+    current: 3
   "LeggedBodyBar": 
     stanceWidth: 0.15
   "BodyMotionGenerationBar": 
@@ -369,12 +334,12 @@ Body:
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 6
+        bodyItem: 3
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
       - 
-        bodyItem: 7
+        bodyItem: 4
         showCenterOfMass: false
         showPpcom: false
         showZmp: false
@@ -405,7 +370,7 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 360, 286 ]
+          sizes: [ 346, 275 ]
           children: 
             - 
               type: pane
@@ -418,7 +383,7 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 399, 247 ]
+          sizes: [ 355, 266 ]
           children: 
             - 
               type: splitter
